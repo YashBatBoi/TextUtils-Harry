@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TextUtils-Harry/static/css/main.e6c13ad2.css",
+    "main.js": "/TextUtils-Harry/static/js/main.06e40d6e.js",
+    "static/js/787.719ec76d.chunk.js": "/TextUtils-Harry/static/js/787.719ec76d.chunk.js",
+    "index.html": "/TextUtils-Harry/index.html",
+    "main.e6c13ad2.css.map": "/TextUtils-Harry/static/css/main.e6c13ad2.css.map",
+    "main.06e40d6e.js.map": "/TextUtils-Harry/static/js/main.06e40d6e.js.map",
+    "787.719ec76d.chunk.js.map": "/TextUtils-Harry/static/js/787.719ec76d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.06e40d6e.js"
+  ]
+}
