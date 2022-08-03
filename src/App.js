@@ -1,11 +1,11 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-// import About from "./components/About";
+import About from "./components/About";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// import { Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -37,7 +37,7 @@ function App() {
       for (let i = 0; i < document.querySelectorAll(".btn").length; i++) {
         document.querySelectorAll(".btn")[i].classList.remove("btn-warning");
       }
-      showAlert("Light mode has been disabled", "success");
+      showAlert("Light mode has been enabled", "success");
     }
   };
 
@@ -63,29 +63,29 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
-      <Navbar
-        title="TextUtils"
-        mode={mode}
-        toggleMode={toggleMode}
-        toggleRedMode={toggleRedMode}
-      />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        {/* <Switch> */}
-        {/* <Route exact path="/"> */}
-        <TextForm
-          showAlert={showAlert}
-          heading="Enter the text below to analyze"
+      <Router>
+        <Navbar
+          title="TextUtils"
           mode={mode}
+          toggleMode={toggleMode}
+          toggleRedMode={toggleRedMode}
         />
-        {/* </Route> */}
-        {/* <Route exact path="/about">
-              <About />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Switch>
+            <Route exact path="/">
+              <TextForm
+                showAlert={showAlert}
+                heading="Try TextUtils - Word counter, Character counter, Remover extra spaces"
+                mode={mode}
+              />
             </Route>
-          </Switch> */}
-      </div>
-      {/* </Router> */}
+            <Route exact path="/about">
+              <About mode={mode} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }

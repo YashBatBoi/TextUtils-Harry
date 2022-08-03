@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // this is also call a function based component ~function Navbar()~
 export default function Navbar(props) {
@@ -10,17 +10,17 @@ export default function Navbar(props) {
         } bg-${props.mode}`}
     >
       <div className="container-fluid">
-        <a
+        <Link
           className={`navbar-brand text-${props.mode === "danger"
+            ? "light"
+            : "dark" && props.mode === "dark"
               ? "light"
-              : "dark" && props.mode === "dark"
-                ? "light"
-                : "dark"
+              : "dark"
             }`}
-          href="#"
+          to="/"
         >
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -35,33 +35,32 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a
-                href="#"
+              <Link
+                to="/"
                 className={`nav-link active text-${props.mode === "danger"
+                  ? "light"
+                  : "dark" && props.mode === "dark"
+                    ? "light"
+                    : "dark"
+                  }`}
+                aria-current="page"
+              >
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/about"
+                className={`nav-link text-${props.mode === "danger"
                     ? "light"
                     : "dark" && props.mode === "dark"
                       ? "light"
                       : "dark"
                   }`}
-                aria-current="page"
-              >
-                Home
-              </a>
-            </li>
-            {/* <li className="nav-item">
-              <Link
-                to="/about"
-                className={`nav-link text-${
-                  props.mode === "danger"
-                    ? "light"
-                    : "dark" && props.mode === "dark"
-                    ? "light"
-                    : "dark"
-                }`}
               >
                 {props.about}
               </Link>
-            </li> */}
+            </li>
           </ul>
           {/* <form className="d-flex">
             <input
@@ -76,11 +75,11 @@ export default function Navbar(props) {
           </form> */}
           <div
             className={`form-check form-switch text-${props.mode === "dark"
+              ? "light"
+              : "dark" && props.mode === "danger"
                 ? "light"
-                : "dark" && props.mode === "danger"
-                  ? "light"
-                  : "dark"
-              } mx-3`}
+                : "dark"
+              } me-3`}
           >
             <input
               className="form-check-input"
@@ -99,10 +98,10 @@ export default function Navbar(props) {
 
           <div
             className={`form-check form-switch text-${props.mode === "dark"
+              ? "light"
+              : "dark" && props.mode === "danger"
                 ? "light"
-                : "dark" && props.mode === "danger"
-                  ? "light"
-                  : "dark"
+                : "dark"
               }`}
           >
             <input
