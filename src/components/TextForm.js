@@ -4,7 +4,6 @@ export default function TextForm(props) {
   const [text, setText] = useState("");
 
   const handleUpClick = () => {
-    // console.log("Uppercase was clicked:" + text);
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to Uppercase", "success");
@@ -24,7 +23,6 @@ export default function TextForm(props) {
   };
 
   const handleOnChange = (event) => {
-    // console.log("On change");
     setText(event.target.value);
   };
 
@@ -51,9 +49,7 @@ export default function TextForm(props) {
           color:
             props.mode === "dark"
               ? "white"
-              : "#042743" && props.mode === "danger"
-                ? "white"
-                : "#042743",
+              : "#042743"
         }}
       >
         <h1 className="my-3">{props.heading}</h1>
@@ -68,15 +64,11 @@ export default function TextForm(props) {
               background:
                 props.mode === "dark"
                   ? "#13466e"
-                  : "white" && props.mode === "danger"
-                    ? "#2e1212"
-                    : "white",
+                  : "white",
               color:
                 props.mode === "dark"
                   ? "white"
-                  : "#042743" && props.mode === "danger"
-                    ? "white"
-                    : "#042743",
+                  : "#042743"
             }}
           ></textarea>
         </div>
@@ -123,9 +115,7 @@ export default function TextForm(props) {
           color:
             props.mode === "dark"
               ? "white"
-              : "#042743" && props.mode === "danger"
-                ? "white"
-                : "#042743",
+              : "#042743"
         }}
       >
         <h2>Your Text Summary</h2>
