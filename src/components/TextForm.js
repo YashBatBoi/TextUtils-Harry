@@ -3,6 +3,10 @@ import React, { useState } from "react";
 export default function TextForm(props) {
   const [text, setText] = useState("");
 
+  const handleOnChange = (event) => {
+    setText(event.target.value);
+  };
+
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
@@ -22,9 +26,10 @@ export default function TextForm(props) {
     props.showAlert("Text has been cleared", "success");
   };
 
-  const handleOnChange = (event) => {
-    setText(event.target.value);
-  };
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(text);
+    props.showAlert("Copied to Clipboard", "success");
+  }
 
   const removeExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
@@ -49,7 +54,9 @@ export default function TextForm(props) {
           color:
             props.mode === "dark"
               ? "white"
-              : "#042743"
+              : "#042743" && props.mode === "danger"
+                ? "white"
+                : "#042743",
         }}
       >
         <h1 className="my-3">{props.heading}</h1>
@@ -64,11 +71,15 @@ export default function TextForm(props) {
               background:
                 props.mode === "dark"
                   ? "#13466e"
-                  : "white",
+                  : "white" && props.mode === "danger"
+                    ? "#2e1212"
+                    : "white",
               color:
                 props.mode === "dark"
                   ? "white"
-                  : "#042743"
+                  : "#042743" && props.mode === "danger"
+                    ? "white"
+                    : "#042743",
             }}
           ></textarea>
         </div>
@@ -96,6 +107,13 @@ export default function TextForm(props) {
         <button
           disabled={text.length === 0}
           className="btn btn-primary mx-1 my-1"
+          onClick={handleCopyText}
+        >
+          Copy Text
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={removeExtraSpaces}
         >
           Remove Extra Spaces
@@ -115,14 +133,16 @@ export default function TextForm(props) {
           color:
             props.mode === "dark"
               ? "white"
-              : "#042743"
+              : "#042743" && props.mode === "danger"
+                ? "white"
+                : "#042743",
         }}
       >
         <h2>Your Text Summary</h2>
         <p>
-          {/* {text.split(' ').filter(function (n) { return n !== '' }).length} words and {text.length} characters */}
+          {/* Here to split the character by a space and a newline we use regular expression "/\s+/" */}
           {
-            text.split(" ").filter((ele) => {
+            text.split(/\s+/).filter((ele) => {
               return ele.length !== 0;
             }).length
           }{" "}
@@ -136,18 +156,11 @@ export default function TextForm(props) {
               }).length
             ).toFixed(2)}{" "}
           Minutes read
-          {/* {0.008 * text.split(" ").length} Minutes read */}
         </p>
         <h2>Preview</h2>
 
         {/* Here we are representing that if the text.length is greater than 0 than it should print the text whatever we write in the textbox and if not then the string should be there that is written after the colon */}
-        <p>
-          {text.length > 0 ? (
-            text
-          ) : (
-            <i>{"Nothing to Preview!"}</i>
-          )}
-        </p>
+        <p>{text.length > 0 ? text : <i>{"Nothing to Preview!"}</i>}</p>
       </div>
     </>
   );

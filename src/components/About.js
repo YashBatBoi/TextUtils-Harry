@@ -12,14 +12,14 @@ export default function About(props) {
       props.mode === "dark"
         ? "white"
         : "#042743" && props.mode === "danger"
-          ? "white"
-          : "#042743",
+        ? "white"
+        : "#042743",
     backgroundColor:
       props.mode === "dark"
         ? "rgb(36, 74, 104)"
         : "white" && props.mode === "danger"
-          ? "red"
-          : "white",
+        ? "red"
+        : "white",
   };
 
   return (
@@ -31,8 +31,8 @@ export default function About(props) {
             props.mode === "dark"
               ? "white"
               : "#042743" && props.mode === "danger"
-                ? "white"
-                : "#042743",
+              ? "white"
+              : "#042743",
         }}
       >
         About Us
